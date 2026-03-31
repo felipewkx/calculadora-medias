@@ -15,8 +15,21 @@
         let n3 = parseFloat(document.getElementById('n3').value)
         let n4 = parseFloat(document.getElementById('n4').value)
 
-            let media = (n1 + n2 + n3 + n4) / 4
-            outputDiv.textContent = `A média é: ${media.toFixed(2)}`;
+        if (isNaN(n1) || isNaN(n2) || isNaN(n3) || isNaN(n4)) {
+        outputDiv.innerHTML = '<span style="color: red;">Erro: Por favor, preencha todas as 4 notas com valores numéricos.</span>';
+        return;
+    }
+     const notas = [n1, n2, n3, n4];
+    for (let nota of notas) {
+        if (nota < 0.0 || nota > 10.0) {
+            outputDiv.innerHTML = '<span style="color: red;">Erro: Todas as notas devem estar entre 0.0 e 10.0.</span>';
+            return;
+        }
+    }
+    
+            let media = n1 + n2 + n3 + n4
+            let mediaFinal = media / 4
+            outputDiv.textContent = `A média é: ${mediaFinal.toFixed(2)}`;
             
         // --- SEU CÓDIGO COMEÇA AQUI ---
         
